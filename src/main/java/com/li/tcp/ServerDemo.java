@@ -14,6 +14,7 @@ public class ServerDemo {
         try {
             ServerSocket server = new ServerSocket();
             SocketAddress address = new InetSocketAddress(InetAddress.getLocalHost(), 10001);
+
             server.bind(address);
             System.out.println("服务端启动");
             Socket client = server.accept();//在接收到客户端消息之前阻塞
