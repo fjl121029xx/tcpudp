@@ -16,7 +16,7 @@ public class ServerDemo {
             SocketAddress address = new InetSocketAddress(InetAddress.getLocalHost(), 10001);
 
             server.bind(address);
-            System.out.println("服务端启动");
+
             Socket client = server.accept();//在接收到客户端消息之前阻塞
 
             System.out.println("远程客户端地址是 " +
@@ -24,16 +24,15 @@ public class ServerDemo {
 
             PrintWriter socketOut = new PrintWriter(client.getOutputStream());
 
-            System.out.println("等待客户端消息");
 
             byte buf[] = new byte[1024];
+            String s = "";
             if (client.getInputStream().read(buf) > 0) {
-                System.out.println("收到的消息是: " + new String(buf));
+                s = new String(buf);
             }
 
-            System.out.println("收到消息,回应客户端.");
-            String sendStr = "服务端收到消息了";
-            socketOut.write(sendStr);
+            System.out.println("从客户端收到的消息是 " + s);
+            socketOut.write(s);
             socketOut.flush();
 
             socketOut.close();
