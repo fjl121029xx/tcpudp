@@ -9,6 +9,9 @@ public class ClientDemo {
     public static void main(String args[]) {
         try {
             DatagramSocket getSocket = new DatagramSocket();
+
+
+
             DatagramPacket datapacket = null;
             InetSocketAddress toAddress = new InetSocketAddress(InetAddress.getLocalHost(), 7778);
 

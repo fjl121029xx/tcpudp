@@ -12,10 +12,7 @@ public class ServerDemo {
 
 
         try {
-            ServerSocket server = new ServerSocket();
-            SocketAddress address = new InetSocketAddress(InetAddress.getLocalHost(), 10001);
-
-            server.bind(address);
+            ServerSocket server = new ServerSocket(10001);
 
             Socket client = server.accept();//在接收到客户端消息之前阻塞
 
@@ -32,7 +29,7 @@ public class ServerDemo {
             }
 
             System.out.println("从客户端收到的消息是 " + s);
-            socketOut.write(s);
+            socketOut.write("2");
             socketOut.flush();
 
             socketOut.close();

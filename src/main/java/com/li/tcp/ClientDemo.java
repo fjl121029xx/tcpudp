@@ -1,9 +1,6 @@
 package com.li.tcp;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.*;
 import java.util.Date;
 
@@ -15,7 +12,7 @@ public class ClientDemo {
 
         try {
             final Socket socket = new Socket();
-            SocketAddress address = new InetSocketAddress(InetAddress.getLocalHost(), 10001);
+            SocketAddress address = new InetSocketAddress("10.0.0.11", 10086);
 
             socket.connect(address);
 
@@ -37,7 +34,7 @@ public class ClientDemo {
             socketOut.flush();
 
             BufferedReader socketIn = new BufferedReader(
-                    new InputStreamReader(socket.getInputStream()));
+                    new InputStreamReader(socket.getInputStream(),"UTF-8"));
 
             String receiveStr = socketIn.readLine();
             System.out.println("从服务端收到的消息: " + receiveStr);
@@ -51,6 +48,8 @@ public class ClientDemo {
         } finally {
 
         }
+
+
 
     }
 }

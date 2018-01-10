@@ -1,5 +1,7 @@
 package com.li.tcp;
 
+import org.junit.Test;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -164,7 +166,7 @@ public class Message {
 
     public Message setDeviceAddrPN(Integer deviceAddrPN) {
 
-        this.deviceAddrPN = Integer.toHexString(deviceAddrPN);
+        this.deviceAddrPN = "0" + Integer.toHexString(deviceAddrPN);
         return this;
     }
 
@@ -228,6 +230,7 @@ public class Message {
                 + dataUintFN
                 + data
                 + date2Str(time);
+        //String a = "C000005E2700470B010108E71CE71C141D141DD61CD61C281D281D00002700270026002700260028002600984E000010018413FFFF640098261D095709C8091A011A011901A04E0000B3190000561A00007C1B0000854F0000000000002D0B000055BE0F00170317090856";
 
         byte[] bytes = hexStringToByteArray(data2.trim());
 
@@ -235,6 +238,7 @@ public class Message {
 
         this.length1 = length.toUpperCase();
         this.length2 = length.toUpperCase();
+
     }
 
 
